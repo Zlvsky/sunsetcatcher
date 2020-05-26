@@ -5,7 +5,7 @@ const http = require('http'),
       app = express(),
       request = require('request'),
       fetch = require('node-fetch');
-
+const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/', function(req, res) {
@@ -13,7 +13,7 @@ app.get('/', function(req, res) {
      .status(200)
      .sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log('server up');
 });
 // function onRequest(request, response) {
