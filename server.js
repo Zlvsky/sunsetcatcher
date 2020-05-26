@@ -111,24 +111,6 @@ var cord1,
       });
      })
 });
-
 setTimeout(function() {
   console.log(cord1, cord2);
 }, 7000);
-
-
-  //
-  // request('http://www.mapquestapi.com/geocoding/v1/address?key=k9dA7kjGnptNIrjn845RSkB3LHAjGxt1&location=Lapy,Poland', { json: true }, (err, res, body) => {
-  //   cord1 = body.results[0].locations[0].latLng.lat;
-  //   cord2 = body.results[0].locations[0].latLng.lng;
-  //
-
-// setTimeout(function() {
-// request(`https://api.weatherbit.io/v2.0/forecast/daily?key=dfea8201c6be4130b42786e0bd60ce94&lat=${cord1.toString()}&lon=${cord2.toString()}`, { json: true }, (err, res, body) => {
-//   const elo = body.data.filter(function(x) {
-//     console.log(x.weather);
-//   })[0];
-//   elo;
-// });
-//
-// }, 1000)
