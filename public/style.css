@@ -1,0 +1,412 @@
+* {
+  margin: 0;
+  font-family: 'Muli', sans-serif;
+  color: white;
+}
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#content {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: block;
+  background-image: url('/images/wp3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#nav {
+  width: 80%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 0 auto;
+}
+#logo {
+
+}
+#currentWeather {
+
+}
+.spannav {
+
+}
+.spandynamic {
+  display: block;
+  width: 84px;
+  height: 20px;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+#inputwrap {
+  position: absolute;
+  display: block;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 500px;
+  height: 66px;
+}
+.spaninput {
+  font-size: 21px;
+}
+.spanmini {
+  font-size: 16px;
+  color: #d2d2d2;
+}
+.input-container {
+  white-space: nowrap;
+  vertical-align: middle;
+  position: relative;
+  width: 450px;
+
+}
+.input-container input#inputstyle {
+  width: 450px;
+  height: 66px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  color: #63717f;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.input-container i {
+  position: absolute;
+  margin: 27px 0 0 17px;
+  z-index: 1;
+  color: #4f5b66;
+}
+.btn {
+  height: 40px;
+   width: 150px;
+   border: none;
+   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+   margin: 20px 20px 20px 20px;
+   text-transform: uppercase;
+   text-decoration: none;
+   font-size: .8em;
+   letter-spacing: 1.5px;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+   position: relative;
+   overflow: hidden;
+   cursor: pointer;
+   background-color: #2b303b;
+}
+.btn span {
+  color: #63717f;;
+  text-decoration: none;
+  letter-spacing: 1px;
+  position: relative;
+  transition: all .45s ease-Out;
+  z-index: 1;
+}
+.circle {
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+  line-height: 40px;
+  border-radius: 50%;
+  background: #63717f;;
+  position: absolute;
+  transition: all .5s ease-Out;
+  top: 20px;
+  left: 70px;
+}
+.btn:hover .circle {
+  width: 200%;
+  height: 500%;
+  opacity: 1;
+  top: -70px;
+  left: -70px;
+}
+
+.btn:hover .span {
+  color: #2b303b;;
+}
+#weatherwrap {
+  position: relative;
+  display: flex;
+  width: 1700px;
+  height: 200px;
+  margin: auto;
+  top:60%;
+  text-align: center;
+}
+.transition {
+    transition: .5s;
+  }
+.weather {
+  width: 150px;
+  height: 170px;
+  display: inline-block;
+  margin: 20px 10px 10px 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+}
+.weather:hover{
+  transform: scale(1.2);
+  transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 14px 16px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.sun {
+  background-image: url('/images/sun.png');
+  width: 64px;
+  height: 64px;
+  position: relative;
+  display: block;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+.lessclouds {
+  background-image: url('/images/lessclouds.png');
+  width: 64px;
+  height: 64px;
+  position: relative;
+  display: block;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+.clouds {
+  background-image: url('/images/clouds.png');
+  width: 64px;
+  height: 64px;
+  position: relative;
+  display: block;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+.sunsetinfo {
+  top:-20%;
+  position: relative;
+  font-size: 35px;
+}
+.cloudinfo {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+.dayinfo {
+  font-size: 20px;
+  letter-spacing: 3px;
+  display: block;
+}
+
+#arrowwrap {
+  position: absolute;
+  display: flex;
+  width: 120px;
+  height: 55px;
+  text-align: center;
+  justify-content: center;
+  top:68%;
+  right: 3%;
+}
+.arrowcontainer {
+  position: relative;
+  display: block;
+  height: 55px;
+  width: 55px;
+}
+.arrow {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  cursor: pointer;
+}
+#locationwrap {
+  position: absolute;
+  height: 70px;
+  width: 150px;
+  cursor: pointer;
+  right: 5%;
+}
+#locationwrap i {
+  margin: 19px 0 0 17px;
+  z-index: 1;
+}
+#currentLocation {
+  width: 160px;
+}
+#locationspan {
+  font-size: 25px
+  width: 160px;
+  text-align: center;
+  margin: 10px 0 0 3px;
+}
+#locationwrap, #inputwrap, #arrowwrap {
+  display: none;
+}
+#appwrap {
+  width: 75%;
+  position: relative;
+  display: flex;
+  margin: 0 auto 0 auto;
+}
+#infowrap {
+  width: 85%;
+  animation-duration: 2s;
+  animation-name: textAnimation;
+}
+.apptitle {
+  font-size: 10vmin;
+  letter-spacing: 2px;
+  border-bottom: 1vmin solid #fff;
+  animation: showTopText 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  transform: translate(150%, 0);
+  bottom: 0;
+}
+.apptitle::after{
+  content: "*";
+  color: #e83067;
+}
+.apptext {
+  font-size: 2.5vmin;
+  margin: 15px 0 15px 0;
+  transform: translate(-150%, 0);
+  animation: showBottomText 1s;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
+  ;
+}
+.apptext::before{
+  content: "*";
+  color: #e83067;
+}
+.apptextinfo {
+  color: #dbdbdb;
+  font-size: 1.7vmin;
+  transform: translate(-120%, 0);
+  animation: showBottomText 1s;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
+}
+#buttonwrap {
+  width: 100%;
+  animation: showTopText 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  transform: translate(300%, 0);
+}
+
+.left-layer {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: auto;
+	left: -100%;
+	bottom: auto;
+	right: auto;
+	background: #5c78a0;
+	transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.left-layer--2 {
+  background: #6b2f49;
+	transition-delay: 0.3s;
+  z-index: 100000;
+}
+
+.left-layer--3 {
+  background:#db334d;
+	transition-delay: 0.12s;
+  z-index: 100000;
+}
+
+.left-layer--4 {
+  background: #dd7f8d;
+	transition-delay: 0.08s;
+  z-index: 100000;
+}
+.active {
+  left: 100%;
+
+}
+.inputactive {
+  border: 1.4px solid #db334d !important;
+}
+.height190 {
+  height: 250% !important;
+  position: absolute !important;
+}
+/* MOBILE */
+@media screen and (max-width:768px) {
+  body {
+    overflow: auto;
+  }
+  #content {
+    background-attachment: fixed;
+    position: fixed;
+  }
+  #appwrap {
+    width: 95%;
+    position: absolute;
+    text-align: center;
+    top:12%;
+    z-index: 2;
+  }
+  #infowrap {
+    width: 100%;
+  }
+  .apptitle {
+    font-size: 45px;
+  }
+  .apptext {
+    font-size: 20px;
+  }
+  .apptextinfo {
+    font-size: 14px;
+  }
+
+  #inputwrap {
+    width: 95%;
+    margin: 0 auto 0 auto;
+    z-index: 2;
+  }
+  .input-container {
+    width: 100% ;
+    margin: 70px auto 60px auto;
+  }
+  #inputstyle {
+    width: 85% !important;
+  }
+  .spaninput {
+    width: 100%;
+    display: block;
+  }
+  #weatherwrap {
+    width: 100%;
+    height: 50%;
+    bottom: 20%;
+    position: absolute;
+    display: block;
+    top: 0;
+  }
+  #locationwrap {
+    text-align: center;
+    width: 90%;
+  }
+  #arrowwrap {
+    display: none !important;
+  }
+}
+
+@keyframes showTopText {
+  0% { transform: translate3d(100%, 0, 0); }
+  40%, 60% { transform: translate3d(50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@keyframes showBottomText {
+  0% { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}

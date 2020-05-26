@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <title>Document</title>
+</head>
+<body>
+<div id="content">
+  <div class="left-layer"></div>
+  <div class="left-layer left-layer--2"></div>
+  <div class="left-layer left-layer--3"></div>
+  <div class="left-layer left-layer--4"></div>
+    <!-- NAV -->
+    <div id="nav">
+      <h1 id="logo">sunsetcatch</h1>
+    </div>
+    <!-- END OF NAV -->
+
+    <!-- INFO -->
+    <div id="appwrap">
+      <div id="infowrap">
+        <h1 class="apptitle">Catch your sunset.</h1>
+
+        <p class="apptext">sunsetcatch. It's a simple web app to check at what time will be sunset wherever you want to check it! <br>also it tells you clouds percentage</p>
+        <div id="buttonwrap">
+        <button class="btn" id="letsgo">
+          <span class="span">let's go!</span>
+          <div class="circle"></div>
+        </button>
+        </div>
+        <p class="apptextinfo">REMEMBER! time zone in this app is GMT+0 <br> for example if app tells you, sunset will be at 6pm in Poland it'll be 8pm;)</p>
+      </div>
+
+    </div>
+    <!-- END OF INFO -->
+
+
+    <!-- location -->
+    <div id="locationwrap">
+      <div id="currentlocation">
+        <i class="fa fa-map-marker"></i>
+        <span>change location</span>
+      </div>
+      <div id="locationspan">current: <span id="citylocation"></span></div>
+    </div>
+    <!-- end of location -->
+    <!-- INPUT -->
+    <div id="inputwrap">
+      <span class="spaninput">type below City and Country:</span>
+      <span class="spanmini">ex. Warszawa, Poland</span>
+      <div class="input-container">
+        <i class="fa fa-search"></i>
+        <input type="text" id="inputstyle" placeholder="go on...">
+      </div>
+
+      <button class="btn" id="submit">
+        <span class="span">submit</span>
+        <div class="circle"></div>
+      </button>
+    </div>
+    <!-- END OF INPUT -->
+    <!-- LIST OF WEATHER -->
+    <div id="weatherwrap">
+
+    </div>
+
+    <!-- END OF LIST -->
+    <div id="arrowwrap">
+      <div class="arrowcontainer">
+        <img src="/images/backw.png" alt="" id="prev" class="arrow">
+      </div>
+      <div class="arrowcontainer">
+        <img src="/images/nextw.png" alt="" id="next" class="arrow">
+      </div>
+    </div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script src="index.js" charset="utf-8"></script>
+</body>
+</html>
