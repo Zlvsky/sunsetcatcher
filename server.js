@@ -16,33 +16,10 @@ app.get('/', function(req, res) {
 app.listen(PORT, function() {
   console.log('server up');
 });
-// function onRequest(request, response) {
-//   response.writeHead(200, {'Content-Type': 'text/html'});
-//   fs.readFile('./index.html', null, function(error, data) {
-//     if(error) {
-//       response.writeHead(404);
-//       response.write('File not found');
-//     } else {
-//       response.write(data);
-//     }
-//
-//     response.end();
-//   });
-// }
-// http.createServer(onRequest).listen(8000);
 var cord1,
     cord2,
     cityAPI,
     params = 'cloudCover',
-    // DATE FOR DEBUGGING
-    // debugMonth = new Date().getMonth(),
-    // debugYear = new Date().getFullYear(),
-    // debugDate = new Date(debugYear, debugMonth + 1, 1).toJSON().slice(0,10).replace(/-/g,'-'),
-    // debugDay = parseInt(debugDate.slice(8,10)),
-    // // NORMAL DATE
-    // utc = new Date().toJSON().slice(0,10).replace(/-/g,'-'), // zmien date bo 32
-    // utcplus = parseInt(utc.slice(8,10)) + 10,
-    // afterutc = utc.slice(0,8) + utcplus,
     utc = new Date(),
     utcyear = utc.getFullYear(),
     utcmonth = utc.getMonth(),
@@ -54,8 +31,6 @@ var cord1,
     integers = [],
     median = [],
     myObject = {};
-
-    // newutc = utcplus > debugDay ? debugDate : afterutc;
 
     app.get('/myapi/:city', async (request, response) => {
       const city = request.params.city.split(',');
@@ -76,7 +51,6 @@ var cord1,
       }
     }).then((response) => response.json()).then((jsonData) => {
       let myJson = jsonData.data;
-
       console.log(myJson.length);
       for(let i = 0; i < myJson.length; i++) {
         let currentJson = myJson[i].sunset;
@@ -119,7 +93,6 @@ var cord1,
         }
         console.log(median);
         calcs();
-
         for(let i = 0; i<tablica.length; i++) {
           myObject[`key${i}`] = new Array();
           myObject[`key${i}`].push(tablica[i]);
@@ -135,17 +108,8 @@ var cord1,
         integers = [];
         median = [];
         myObject = {};
-
       });
      })
-     // const data = {
-     //   latlon: json,
-     //   weather: JSON.stringify(myObject)
-     // };
-     // const data = JSON.stringify(myObject)
-
-      // KONIEC
-
 });
 
 setTimeout(function() {

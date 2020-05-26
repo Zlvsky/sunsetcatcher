@@ -335,10 +335,7 @@ body {
 .inputactive {
   border: 1.4px solid #db334d !important;
 }
-.height190 {
-  height: 250% !important;
-  position: absolute !important;
-}
+
 /* MOBILE */
 @media screen and (max-width:768px) {
   body {
@@ -398,6 +395,10 @@ body {
   }
   #arrowwrap {
     display: none !important;
+  }
+  .height190 {
+    height: 250% !important;
+    position: absolute !important;
   }
 }
 
