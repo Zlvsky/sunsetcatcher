@@ -7,7 +7,7 @@ const http = require('http'),
       fetch = require('node-fetch'),
       tzwhere = require('tzwhere');
 require('dotenv').config()
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.port || 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
 
