@@ -6,6 +6,7 @@ const http = require('http'),
       request = require('request'),
       fetch = require('node-fetch'),
       tzwhere = require('tzwhere');
+require('dotenv').config()
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -65,7 +66,7 @@ var cord1,
       const city = request.params.city.split(',');
       const living = city[0];
       const country = city[1];
-      const api_url = `http://www.mapquestapi.com/geocoding/v1/address?key=k9dA7kjGnptNIrjn845RSkB3LHAjGxt1&location=${living},${country}`;
+      const api_url = `http://www.mapquestapi.com/geocoding/v1/address?key=${process.env.MAP_API}&location=${living},${country}`;
       const fetch_response = await fetch(api_url);
       const json = await fetch_response.json();
       cord1 = json.results[0].locations[0].latLng.lat;
@@ -78,7 +79,7 @@ var cord1,
 
       fetch(`https://api.stormglass.io/v2/astronomy/point?lat=${cord1}&lng=${cord2}&end=${newutc}`, {
       headers: {
-        'Authorization': 'ecc544be-8e0c-11ea-84c3-0242ac130002-ecc5455e-8e0c-11ea-84c3-0242ac130002'
+        'Authorization': `${process.env.STORM_API}`
       }
     }).then((response) => response.json()).then((jsonData) => {
       let myJson = jsonData.data;
@@ -91,7 +92,7 @@ var cord1,
       // NEXT
       fetch(`https://api.stormglass.io/v2/weather/point?lat=${cord1}&lng=${cord2}&params=${params}`, {
         headers: {
-          'Authorization': 'ecc544be-8e0c-11ea-84c3-0242ac130002-ecc5455e-8e0c-11ea-84c3-0242ac130002'
+          'Authorization': `${process.env.STORM_API}`
         }
       }).then((response) => response.json()).then((jsonData) => {
         console.log(jsonData.hours.length); // SPRAWDZ KAZDY PO KOLEI CZY MA 18:0 I WPIERDOL TO DO TABLICY ELO
