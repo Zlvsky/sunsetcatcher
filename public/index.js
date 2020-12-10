@@ -15,6 +15,7 @@ var cord1, cord2, slides, slideWidth;
 
 const button = document.getElementById('submit'),
       input = document.getElementById('inputstyle'),
+      inputcontainer = document.getElementById('input-container'),
       weatherwrap = document.getElementById('weatherwrap'),
       letsgo = document.getElementById('letsgo'),
       layers = document.querySelectorAll('.left-layer'),
@@ -38,11 +39,19 @@ letsgo.onclick = () => {
 }
 
 button.onclick = () => {
-  if(input.value == "") {
-    input.classList.toggle('inputactive');
+  let inputval = input.value,
+      val = inputval.split(/[,]+/);
+  if(inputval == "" || inputval.includes(',') == false || val[1] == '' || val[1] == false) {
+    input.classList.add('start-color');
+    inputcontainer.classList.add('start-shake');
+    setTimeout(()=>{
+      input.classList.remove('start-color');
+      inputcontainer.classList.remove('start-shake');
+      input.value = '';
+    }, 700);
   } else {
   content.classList.toggle('height190');
-  val = input.value.split(/[ ,]+/);
+  val = input.value.split(/[,]+/);
   for(const layer of layers) {
     layer.classList.toggle("active");
   }
@@ -126,6 +135,7 @@ locationwrap.onclick = () => {
   $('.weather').remove();
   for(const layer of layers) {
     layer.classList.toggle("active");
+    input.value = '';
   }
   content.classList.toggle('height190');
   setTimeout(function (){

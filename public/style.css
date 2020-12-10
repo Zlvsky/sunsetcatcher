@@ -59,18 +59,18 @@ body {
   font-size: 16px;
   color: #d2d2d2;
 }
-.input-container {
+#input-container {
   white-space: nowrap;
   vertical-align: middle;
   position: relative;
   width: 450px;
 
 }
-.input-container input#inputstyle {
+#input-container input#inputstyle {
   width: 450px;
   height: 66px;
   background: #2b303b;
-  border: none;
+  border: 3px solid #2b303b;
   font-size: 10pt;
   color: #63717f;
   padding-left: 45px;
@@ -78,7 +78,7 @@ body {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.input-container i {
+#input-container i {
   position: absolute;
   margin: 27px 0 0 17px;
   z-index: 1;
@@ -370,7 +370,7 @@ body {
     margin: 0 auto 0 auto;
     z-index: 2;
   }
-  .input-container {
+  #input-container {
     width: 100% ;
     margin: 70px auto 60px auto;
   }
@@ -399,6 +399,35 @@ body {
   .height190 {
     height: 250% !important;
     position: absolute !important;
+  }
+}
+.start-shake {
+  animation-name: shake;
+  animation-duration: 0.7s;
+  animation-iteration-count: 1;
+}
+.start-color {
+  animation-name: glow-red;
+  animation-duration: 0.35s;
+  animation-iteration-count: 2;
+}
+
+@keyframes shake {
+  0%, 20%, 40%, 60%, 80% {
+    transform: translateX(8px);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-8px);
+  }
+}
+
+@keyframes glow-red {
+  50% {
+    border-color: indianred;
   }
 }
 

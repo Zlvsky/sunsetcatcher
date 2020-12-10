@@ -2,9 +2,9 @@
   "name": "sunsetcatch",
   "version": "1.0.0",
   "description": "app for photographers",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "zlvsky",
@@ -15,6 +15,7 @@
     "lodash": "^4.17.15",
     "node-fetch": "^2.6.0",
     "request": "^2.88.2",
+    "tzwhere": "^1.0.1",
     "underscore": "^1.10.2"
   }
 }

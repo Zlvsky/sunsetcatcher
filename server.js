@@ -4,8 +4,10 @@ const http = require('http'),
       path = require('path'),
       app = express(),
       request = require('request'),
-      fetch = require('node-fetch');
+      fetch = require('node-fetch'),
+      tzwhere = require('tzwhere');
 const PORT = process.env.PORT || 3000;
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/', function(req, res) {
@@ -16,10 +18,35 @@ app.get('/', function(req, res) {
 app.listen(PORT, function() {
   console.log('server up');
 });
+// function onRequest(request, response) {
+//   response.writeHead(200, {'Content-Type': 'text/html'});
+//   fs.readFile('./index.html', null, function(error, data) {
+//     if(error) {
+//       response.writeHead(404);
+//       response.write('File not found');
+//     } else {
+//       response.write(data);
+//     }
+//
+//     response.end();
+//   });
+// }
+// http.createServer(onRequest).listen(8000);
+tzwhere.init();
 var cord1,
     cord2,
+    timezone,
     cityAPI,
     params = 'cloudCover',
+    // DATE FOR DEBUGGING
+    // debugMonth = new Date().getMonth(),
+    // debugYear = new Date().getFullYear(),
+    // debugDate = new Date(debugYear, debugMonth + 1, 1).toJSON().slice(0,10).replace(/-/g,'-'),
+    // debugDay = parseInt(debugDate.slice(8,10)),
+    // // NORMAL DATE
+    // utc = new Date().toJSON().slice(0,10).replace(/-/g,'-'), // zmien date bo 32
+    // utcplus = parseInt(utc.slice(8,10)) + 10,
+    // afterutc = utc.slice(0,8) + utcplus,
     utc = new Date(),
     utcyear = utc.getFullYear(),
     utcmonth = utc.getMonth(),
@@ -32,6 +59,8 @@ var cord1,
     median = [],
     myObject = {};
 
+    // newutc = utcplus > debugDay ? debugDate : afterutc;
+
     app.get('/myapi/:city', async (request, response) => {
       const city = request.params.city.split(',');
       const living = city[0];
@@ -42,6 +71,8 @@ var cord1,
       cord1 = json.results[0].locations[0].latLng.lat;
       cord2 = json.results[0].locations[0].latLng.lng;
       cityAPI = json.results[0].locations[0].adminArea5;
+      timezone = tzwhere.tzNameAt(cord1, cord2);
+      console.log(timezone);
       myObject = {};
         // TUTAJ
 
@@ -93,9 +124,12 @@ var cord1,
         }
         console.log(median);
         calcs();
+
         for(let i = 0; i<tablica.length; i++) {
           myObject[`key${i}`] = new Array();
-          myObject[`key${i}`].push(tablica[i]);
+          let fastDate = new Date(tablica[i]).toLocaleString('en-US', {timeZone: timezone});
+          let helpDate = new Date(fastDate);
+          myObject[`key${i}`].push(new Date(helpDate.getTime() - (helpDate.getTimezoneOffset() * 60000)).toISOString());
           myObject[`key${i}`].push(median[i]);
         }
         myObject['city'] = new Array();
@@ -108,9 +142,36 @@ var cord1,
         integers = [];
         median = [];
         myObject = {};
+
       });
      })
+     // const data = {
+     //   latlon: json,
+     //   weather: JSON.stringify(myObject)
+     // };
+     // const data = JSON.stringify(myObject)
+
+      // KONIEC
+
 });
+
 setTimeout(function() {
   console.log(cord1, cord2);
 }, 7000);
+
+
+  //
+  // request('http://www.mapquestapi.com/geocoding/v1/address?key=k9dA7kjGnptNIrjn845RSkB3LHAjGxt1&location=Lapy,Poland', { json: true }, (err, res, body) => {
+  //   cord1 = body.results[0].locations[0].latLng.lat;
+  //   cord2 = body.results[0].locations[0].latLng.lng;
+  //
+
+// setTimeout(function() {
+// request(`https://api.weatherbit.io/v2.0/forecast/daily?key=dfea8201c6be4130b42786e0bd60ce94&lat=${cord1.toString()}&lon=${cord2.toString()}`, { json: true }, (err, res, body) => {
+//   const elo = body.data.filter(function(x) {
+//     console.log(x.weather);
+//   })[0];
+//   elo;
+// });
+//
+// }, 1000)
