@@ -1,16 +1,3 @@
-// const http = require('http'),
-//       fs = require('fs');
-//
-// const server = http.createServer(function(req, res) {
-//   console.log('request was made: ' + req.url);
-//   res.writeHead(200, {'Content type': 'text/html'});
-//   const myStream = fs.createReadStream(__dirname + '/index.html', 'utf8');
-//   myStream.pipe(res);
-// });
-// server.listen(3000, '127.0.0.1');
-// console.log('ayo');
-
-// ecc544be-8e0c-11ea-84c3-0242ac130002-ecc5455e-8e0c-11ea-84c3-0242ac130002 stormglass
 var cord1, cord2, slides, slideWidth;
 
 const button = document.getElementById('submit'),
@@ -20,7 +7,7 @@ const button = document.getElementById('submit'),
       letsgo = document.getElementById('letsgo'),
       layers = document.querySelectorAll('.left-layer'),
       cityspan = document.getElementById('citylocation');
-// DIVS TO MANIPULATE WITH OPACITY AND display and width
+// DIVS TO MANIPULATE OPACITY, DISPLAY AND WIDTH
 const appwrap = document.getElementById('appwrap'),
       locationwrap = document.getElementById('locationwrap'),
       inputwrap = document.getElementById('inputwrap'),
@@ -65,9 +52,6 @@ button.onclick = () => {
     const api_url = `/myapi/${val[0].polishChars()},${val[1].polishChars()}`;
     const response = await fetch(api_url);
     const json = await response.json();
-    // const weather_url = '/weather/city';
-    // const weather_response = await fetch(weather_url);
-    // const summary = await weather_response.json();
     const summary = json;
     cityspan.innerHTML = summary['city'];
     console.log(summary);
@@ -128,7 +112,6 @@ button.onclick = () => {
       },500);
     }
   })();
-  // console.log(input);
  }
 }
 locationwrap.onclick = () => {
@@ -143,7 +126,6 @@ locationwrap.onclick = () => {
     locationwrap.style.display = 'none';
     inputwrap.style.display = 'block';
   }, 650);
-
 }
 
 // REPLACE POLISH CHARS
