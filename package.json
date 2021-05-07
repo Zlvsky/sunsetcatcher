@@ -17,6 +17,6 @@
     "node-fetch": "^2.6.1",
     "request": "^2.88.2",
     "tzwhere": "^1.0.1",
-    "underscore": "^1.10.2"
+    "underscore": "^1.12.1"
   }
 }
